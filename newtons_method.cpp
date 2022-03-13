@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <math.h>
+#define precision 0.000001
 using namespace std;
 
 double coefficients[100];
@@ -31,7 +32,7 @@ double newton(double n) {
     next = n - f(n)/df(n);
     cout << n << "\n";
 
-    return (abs(f(n) / df(n)) <= 0.000001) ? next : newton(next);
+    return (abs(f(n) / df(n)) <= precision) ? next : newton(next);
 }
 
 int main() {
@@ -43,7 +44,7 @@ int main() {
     cout << "Please input coefficients:";
     for(int i = degree; i >= 0; i--) cin >> coefficients[i];
 
-    cout << "Please input starting point:";
+    cout << "Please input a starting point:";
 
     cin >> start;
     newton(start);
