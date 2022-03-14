@@ -1,11 +1,12 @@
 #include <iostream>
-#include <stdlib.h>
+#include <string>
+#include <sstream>
 #include <math.h>
 using namespace std;
 
 #define precision 0.000001
 double coefficients[100];
-int degree, count = 1;
+int degree = -1, count = 1;
 
 double f(double x) {
     double total = 0;
@@ -36,12 +37,21 @@ double newton(double a) {
 
 int main() {
     double a1;
+    string input, buffer;
 
-    cout << "Please input the degree of the polynominal: ";
-    cin >> degree;
+    cout << "Please input a polynominal: ";
+    getline(cin, input);
+    stringstream ss(input);
+    while(ss >> buffer) degree++;
 
-    cout << "Please input coefficients: ";
-    for(int i = degree; i >= 0; i--) cin >> coefficients[i];
+    ss.str("");
+    ss.clear();
+    ss << input;
+
+    for(int i = degree; i >= 0; i--) {
+	ss >> buffer;
+	coefficients[i] = stoi(buffer);
+    }
 
     cout << "Please input a1: ";
     cin >> a1;
