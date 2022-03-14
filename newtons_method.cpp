@@ -1,11 +1,11 @@
 #include <iostream>
 #include <stdlib.h>
 #include <math.h>
-#define precision 0.000001
 using namespace std;
 
+#define precision 0.000001
 double coefficients[100];
-int degree;
+int degree, count = 1;
 
 double f(double x) {
     double total = 0;
@@ -27,27 +27,25 @@ double df(double x) {
     return total;
 }
 
-double newton(double n) {
-    double next;
-    next = n - f(n)/df(n);
-    cout << n << "\n";
+double newton(double a) {
+    double aNext = a - f(a)/df(a);
+    cout << "a" << count++ << " = " << a << "\n";
 
-    return (abs(f(n) / df(n)) <= precision) ? next : newton(next);
+    return (abs(aNext - a) <= precision) ? aNext : newton(aNext);
 }
 
 int main() {
-    double start;
+    double a1;
 
-    cout << "Please input the degree of the polynominal:";
+    cout << "Please input the degree of the polynominal: ";
     cin >> degree;
 
-    cout << "Please input coefficients:";
+    cout << "Please input coefficients: ";
     for(int i = degree; i >= 0; i--) cin >> coefficients[i];
 
-    cout << "Please input a starting point:";
-
-    cin >> start;
-    newton(start);
+    cout << "Please input a1: ";
+    cin >> a1;
+    newton(a1);
 
     return 0;
 }
