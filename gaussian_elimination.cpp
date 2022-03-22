@@ -14,7 +14,7 @@ int identify(double matrixptr[][4]) { // 1:one solution 2:no solution 3:infinite
 	    cout << "\nInfinite Solutions\n";
 	    cout << matrixptr[0][0] << "x + "
 		 << matrixptr[0][1] << "y + "
-		 << matrixptr[0][2] << "z + "
+		 << matrixptr[0][2] << "z = "
 		 << matrixptr[0][3] << "\n";
 	    return 4;
 	}
