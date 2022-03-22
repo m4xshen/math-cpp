@@ -18,6 +18,7 @@ void cipher(int k_list[], int len, int option) {
 	else if(input[i] + option*k < 'A') cout << (char)(input[i] + option*k + 26);
 	else cout << (char)(input[i] + option*k);
     }
+    cout << "\n";
 }
 
 int main() {

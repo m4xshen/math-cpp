@@ -34,6 +34,7 @@ int main() {
 	cout << "\nx = " << delta_x / delta;
 	cout << "\ny = " << delta_y / delta;
     }
+    cout << "\n";
 
     return 0;
 }
